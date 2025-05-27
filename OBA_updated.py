@@ -1535,13 +1535,13 @@ def show_procurement_topic_analysis():
                 color_discrete_sequence=px.colors.qualitative.Set2
             )
             
-            # Improve bar chart layout
             fig_bar.update_layout(
                 xaxis_title="Keywords",
                 yaxis_title="Count",
                 legend_title="Item Type",
                 font=dict(size=12),
                 margin=dict(l=40, r=40, t=60, b=100),
+                height=550,
             )
             
             st.plotly_chart(fig_bar, use_container_width=True)
@@ -1592,19 +1592,20 @@ def show_procurement_topic_analysis():
                 polar=dict(
                     radialaxis=dict(
                         visible=True,
-                        range=[0, max_value * 1.1]  # Add 10% padding
+                        range=[0, max_value * 1.1]
                     )
                 ),
                 showlegend=True,
-                title=f'Top Keywords Across Agencies',
+                title='Top Keywords Across Agencies',
                 legend=dict(
-                    orientation="v",
-                    yanchor="top",
-                    y=1.0,
-                    xanchor="right",
-                    x=1.1
+                    orientation="h",        # Horizontal layout
+                    yanchor="bottom", 
+                    y=-0.5,                 # Push legend below the chart
+                    xanchor="center", 
+                    x=0.5
                 ),
-                margin=dict(l=80, r=120, t=100, b=10),
+                margin=dict(l=80, r=80, t=100, b=140), 
+                height =550
             )
             
             st.plotly_chart(radar_fig, use_container_width=True)
